@@ -54,8 +54,10 @@ public class Timer {
      */
     public <T, U> double repeat(int n, Supplier<T> supplier, Function<T, U> function, UnaryOperator<T> preFunction, Consumer<U> postFunction) {
         logger.trace("repeat: with " + n + " runs");
+        pause();
         T tempT = supplier.get();
         U tempU;
+        resume();
         for (int i = 0;i < n;i++){
             if(preFunction !=null){
                 pause();
